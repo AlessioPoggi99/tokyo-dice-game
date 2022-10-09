@@ -1,0 +1,101 @@
+---
+import PageLayout from '../layouts/PageLayout.astro'
+import Settings from '../components/Settings'
+
+const rankName = [
+  'Tokyo',
+
+  'Dobule six',
+  'Double five',
+  'Dobule four',
+  'Double three',
+  'Dobule two',
+  'Double one',
+
+  'Sixty-five',
+  'Sixty-four',
+  'Sixty-three',
+  'Sixty-two',
+  'Sixty-one',
+
+  'Fifty-four',
+  'Fifty-three',
+  'Fifty-two',
+  'Fifty-one',
+
+  'Fourty-three',
+  'Fourty-two',
+  'Fourty-one',
+
+  'Thirty-two',
+  'Thirty-one'
+]
+const rankImg = [
+  ['two', 'one'],
+
+  ['six', 'six'],
+  ['five', 'five'],
+  ['four', 'four'],
+  ['three', 'three'],
+  ['two', 'two'],
+  ['one', 'one'],
+
+  ['six', 'five'],
+  ['six', 'four'],
+  ['six', 'three'],
+  ['six', 'two'],
+  ['six', 'one'],
+
+  ['five', 'four'],
+  ['five', 'three'],
+  ['five', 'two'],
+  ['five', 'one'],
+
+  ['four', 'three'],
+  ['four', 'two'],
+  ['four', 'one'],
+
+  ['three', 'two'],
+  ['three', 'one']
+]
+---
+
+<PageLayout>
+  <section>
+    <Settings client:visible />
+  </section>
+  <div class="w-full h-[.1rem] my-6 bg-black dark:bg-white opacity-25"></div>
+  <section>
+    <div class="">
+      <h2 class="text-xl font-bold mb-2">Tokyo dice rankings</h2>
+      <div class="grid grid-cols-2">
+        {
+          rankName.map((el, index) => (
+            <>
+              {[1, 12, 19].indexOf(index) > -1 ? <div /> : ''}
+              <div class="flex flex-col gap-y-2 mb-4 mx-2">
+                <h3 class="text-base flex">
+                  {index + 1}
+                  <div class="w-1 h-1 bg-black dark:bg-white rounded-full translate-y-[.65rem] mx-1" />
+                  <p class="font-bold">{el}</p>
+                </h3>
+                <div class="flex gap-x-2 ml-2 -mt-1">
+                  <img
+                    src={`/images/die/${rankImg[index][0]}.png`}
+                    alt="Rank image"
+                    width="50px"
+                  />
+                  <img
+                    src={`/images/die/${rankImg[index][1]}.png`}
+                    alt="Rank image"
+                    width="50px"
+                  />
+                </div>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>

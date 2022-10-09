@@ -2,12 +2,39 @@ import React, { useEffect, useState } from 'react'
 import '../styles/cube.css'
 
 export default function Dice() {
-  const [style, setStyle] = useState<{}[]>([{}])
+  const [rotation, setRotation] = useState([{}])
   const [result, setResult] = useState<number[]>()
 
-  var min = 1
-  var max = 6 * 4
+  const [size, setSize] = useState('scale-0')
+  const [anim, setAnim] = useState('')
+  const [num, setNum] = useState('')
 
+  useEffect(() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('size')) {
+      const size = localStorage.getItem('size')
+      if (size === 'small') setSize('scale-100')
+      else if (size === 'medium') setSize('scale-125')
+      else if (size === 'large') setSize('scale-150')
+      else setSize('scale-125')
+    } else {
+      setSize('scale-125')
+    }
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('anim')) {
+      const anim = localStorage.getItem('anim')
+      setAnim(anim || '4')
+    } else {
+      setAnim('4')
+    }
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('num')) {
+      const num = localStorage.getItem('num')
+      setNum(num || '2')
+    } else {
+      setNum('2')
+    }
+  }, [])
+
+  const min = 1
+  const max = 6 * 4
   const valuesMatrix = [
     [1, 5, 6, 2],
     [3, 5, 4, 2],
@@ -27,42 +54,35 @@ export default function Dice() {
       valuesMatrix[(yRand[1] % 360) / 90][(xRand[1] % 360) / 90]
     ])
 
-    setStyle([
-      { transform: `rotateX(${xRand[0]}deg) rotateY(${yRand[0]}deg)` },
-      { transform: `rotateX(${xRand[1]}deg) rotateY(${yRand[1]}deg)` }
+    setRotation([
+      {
+        transform: `rotateX(${xRand[0]}deg) rotateY(${yRand[0]}deg)`,
+        transitionDuration: `${anim}s`
+      },
+      {
+        transform: `rotateX(${xRand[1]}deg) rotateY(${yRand[1]}deg)`,
+        transitionDuration: `${anim}s`
+      }
     ])
   }
 
-  useEffect(() => {
-    console.log(result)
-  }, [result])
-
   return (
     <div
-      className="flex flex-col absolute w-60 h-60 top-1/2 left-1/2 mt-[-7.5rem] ml-[-7.5rem]"
       onClick={roll}
+      className={`flex flex-col md:flex-row gap-y-16 gap-x-16 items-center 
+        transition-all ${size} absolute w-[100px] h-[264px] md:w-[264px] md:h-[100px]
+        top-1/2 left-1/2 mt-[-132px] md:mt-[-50px] ml-[-50px] md:ml-[-132px]`}
     >
-      <div className="flex flex-col items-center gap-x-16 scale-125">
-        <Die id="dice1" style={style[0]} />
-        <Die id="dice2" style={style[1]} />
-      </div>
-      {/*
-      <div className="flex justify-center">
-        <button
-          className="px-4 py-2 rounded-md bg-orange-300 dark:bg-white dark:text-black"
-          onClick={roll}
-        >
-          Roll dice!
-        </button>
-      </div>
-    */}
+      <Die id="dice1" rotation={rotation[0]} />
+      <Die id="dice2" rotation={rotation[1]} />
     </div>
   )
 }
 
-const Die = ({ id, style }: any) => {
+const Die = ({ id, rotation }: any) => {
+  //const duration: number = +anim
   return (
-    <div id={id} className="dice dice-one" style={style}>
+    <div id={id} className="dice" style={rotation}>
       <div id="dice-one-side-one" className="side one">
         <div className="dot one-1"></div>
       </div>

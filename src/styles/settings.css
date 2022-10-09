@@ -1,0 +1,75 @@
+/*** INPUT RADIO ***/
+input[type='radio'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ffffff00;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.125em solid gray;
+  border-radius: 50%;
+  transform: translateY(0.15em);
+  margin-right: 0.5em;
+
+  display: grid;
+  place-content: center;
+}
+
+input[type='radio']::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  /*box-shadow: inset 1em 1em black;*/
+}
+
+input[type='radio']:checked::before {
+  transform: scale(1);
+}
+
+input[type='radio']:checked {
+  transition: 120ms all ease-in-out;
+  /*border: 0.125em solid black;*/
+}
+
+/*** INPUT RANGE ***/
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-right: 15px;
+  width: 100%;
+  height: 5px;
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 5px;
+  background-image: linear-gradient(
+    0.25turn,
+    rgb(220, 38, 38),
+    red
+  ); /* linear-gradient(#ff4500, #ff4500); */
+  /* background-size: 70% 100%; */
+  background-repeat: no-repeat;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background: red;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}

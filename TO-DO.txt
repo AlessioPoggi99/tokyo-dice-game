@@ -1,2 +1,3 @@
 Inserire in link del mio portfolio nel file: './src/config.ts'
 Inserire il link della repo github di questo progetto nel file: './components/Header.astro'
+Aggiungere fireworks quando esce tokyo (2-1 / 1-2): 'https://github.com/crashmax-dev/fireworks-js/'

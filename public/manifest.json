@@ -1,0 +1,7 @@
+{
+  "short_name": "Tokyo",
+  "name": "Tokyo - The dice game",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait"
+}

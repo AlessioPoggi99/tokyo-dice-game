@@ -1,8 +1,2 @@
 Inserire in link del mio portfolio nel file: './src/config.ts'
-Inserire il link della repo github di questo progetto nel file: './components/Header.astro'
 Aggiungere fireworks quando esce tokyo (2-1 / 1-2): 'https://github.com/crashmax-dev/fireworks-js/'
-
-Impostare nuove scale 'scale-100 / scale-125 / scale-150' proporzionate al numero dei dadi
-Sistemare lo schema dei dadi quando sono 4 con schermo orizzontale, e 5 con schermo orizzontale e
-    verticale (formazione a 5 del dado '2 in alto 1 al centro e 2 in basso (per schermi verticali)'
-    e '2 a sinistra 1 al centro e 2 a destra (per schermi orizzontale)')

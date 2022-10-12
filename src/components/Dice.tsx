@@ -84,9 +84,9 @@ export default function Dice() {
     <div
       onClick={roll}
       className={`
-        ${+num < 4 ? 'flex flex-col md:flex-row' : 'grid'}
-        grid-cols-2 ${+num === 4 ? 'md:grid-col-2' : 'md:grid-cols-3'}
-        gap-y-16 md:gap-y-20 gap-x-16 items-center transition-all ${size} absolute
+        ${+num < 4 ? 'flex flex-col sm:flex-row' : 'grid'}
+        grid-cols-2 ${+num === 4 ? 'sm:grid-col-2' : 'sm:grid-cols-3'}
+        gap-y-16 sm:gap-y-20 gap-x-16 items-center transition-all ${size} absolute
         ${+num > 3 ? 'w-[264px] ml-[-132px]' : 'w-[100px] ml-[-50px]'}
         ${
           +num > 4 || +num === 3
@@ -97,15 +97,15 @@ export default function Dice() {
         }
         ${
           +num > 4 || +num === 3
-            ? 'md:w-[428px] md:ml-[-214px]'
+            ? 'sm:w-[428px] sm:ml-[-214px]'
             : +num > 1
-            ? 'md:w-[264px] md:ml-[-132px]'
-            : 'md:w-[100px] md:ml-[-50px]'
+            ? 'sm:w-[264px] sm:ml-[-132px]'
+            : 'sm:w-[100px] sm:ml-[-50px]'
         }
         ${
           +num > 3
-            ? 'md:h-[264px] md:mt-[-132px]'
-            : 'md:h-[100px] md:mt-[-50px]'
+            ? 'sm:h-[264px] sm:mt-[-132px]'
+            : 'sm:h-[100px] sm:mt-[-50px]'
         }
         top-1/2 left-1/2`}
     >
@@ -114,8 +114,8 @@ export default function Dice() {
           <div
             key={`dice${index}`}
             className={`
-              ${+num === 5 && index === 2 ? 'col-span-2 md:col-span-1' : ''}
-              ${+num === 5 && index === 1 ? 'md:row-span-2' : ''}
+              ${+num === 5 && index === 2 ? 'col-span-2 sm:col-span-1' : ''}
+              ${+num === 5 && index === 1 ? 'sm:row-span-2' : ''}
               m-auto`}
           >
             <Die id={`dice${index}`} rotation={rotation[index]} />
